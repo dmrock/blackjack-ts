@@ -14,3 +14,7 @@ export function shuffleArray<T>(array: T[]) {
   }
   return array;
 }
+
+export function getBet(balance: number): number {}
+
+export function getStrHand(hand: ICard[], hideSecondCard: boolean = true): string {}
