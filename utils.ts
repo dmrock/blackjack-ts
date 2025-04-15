@@ -1,4 +1,7 @@
 import { ICard } from './types';
+import promptSync from 'prompt-sync';
+
+const prompt = promptSync();
 
 export function getDecision(): 'hit' | 'stand' {}
 
