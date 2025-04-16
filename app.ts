@@ -36,4 +36,23 @@ while (balance > 0) {
     console.log(`Dealer's hand: ${getStrHand(dealerHand)}. Dealer has blackjack. You lose.`);
     continue;
   }
+
+  const playerFinalValue = playerTurn(playerHand, deck);
+  if (playerFinalValue > 21) {
+    console.log('You busted! Dealer wins.');
+    continue;
+  }
+
+  const dealerFinalValue = dealerTurn(dealerHand, deck);
+  if (dealerFinalValue > 21 || dealerFinalValue < playerFinalValue) {
+    console.log(`You won $${bet * 2}`);
+    balance += bet * 2;
+  } else if (dealerFinalValue === playerFinalValue) {
+    console.log('Push! You get your bet back.');
+    balance += bet;
+  } else {
+    console.log(`Dealer wins with ${dealerFinalValue}. You lose your bet.`);
+  }
 }
+
+console.log('Game over! Thanks for playing.');
