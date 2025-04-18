@@ -3,7 +3,16 @@ import promptSync from 'prompt-sync';
 
 const prompt = promptSync();
 
-export function getDecision(): 'hit' | 'stand' {}
+export function getDecision(): 'hit' | 'stand' {
+  while (true) {
+    const decision = prompt('Do you want to hit or stand?: ').toLowerCase();
+    if (decision === 'hit' || decision === 'stand') {
+      return decision as 'hit' | 'stand';
+    } else {
+      console.log('Invalid input. Please enter "hit" or "stand".');
+    }
+  }
+}
 
 export function getHandValue(cards: ICard[]): number {}
 
