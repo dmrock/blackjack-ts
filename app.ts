@@ -7,7 +7,7 @@ function playerTurn(playerHand: ICard[], deck: Deck): number {
 
   while (true) {
     const action = getDecision();
-    if (action === 'hit') return handValue;
+    if (action !== 'hit') return handValue;
 
     playerHand.push(deck.deal(1)[0]);
     handValue = getHandValue(playerHand);

@@ -1,5 +1,5 @@
 import Card from './card';
-import { IDeal, Suit } from './types';
+import { ICard, IDeal, Suit } from './types';
 import { shuffleArray } from './utils';
 
 class Deck implements IDeal {
@@ -19,15 +19,15 @@ class Deck implements IDeal {
       }
     }
 
-    // Shuffle the deck
     shuffleArray(this.deck);
   }
 
-  deal(num: number): Card[] {
-    const cards: Card[] = [];
+  deal(num: number): ICard[] {
+    const cards: ICard[] = [];
 
     for (let i = 0; i < num; i++) {
       const card = this.deck.pop();
+
       if (card) {
         cards.push(card);
       }
