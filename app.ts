@@ -19,7 +19,17 @@ function playerTurn(playerHand: ICard[], deck: Deck): number {
   }
 }
 
-function dealerTurn(dealerHand: ICard[], deck: Deck): number {}
+function dealerTurn(dealerHand: ICard[], deck: Deck): number {
+  let handValue = getHandValue(dealerHand);
+
+  while (true) {
+    console.log(`Dealer's hand: ${getStrHand(dealerHand)} (Total: ${handValue})`);
+    if (handValue >= 17) return handValue;
+
+    dealerHand.push(deck.deal(1)[0]);
+    handValue = getHandValue(dealerHand);
+  }
+}
 
 const deck = new Deck();
 
