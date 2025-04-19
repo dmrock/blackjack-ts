@@ -43,6 +43,15 @@ export function shuffleArray<T>(array: T[]) {
   return array;
 }
 
-export function getBet(balance: number): number {}
+export function getBet(balance: number): number {
+  while (true) {
+    const bet = parseFloat(prompt(`Enter your bet (max $${balance}): `));
+    if (!isNaN(bet) && bet > 0 && bet <= balance) {
+      return bet;
+    } else {
+      console.log(`Invalid bet. Please enter a number between 1 and ${balance}.`);
+    }
+  }
+}
 
 export function getStrHand(hand: ICard[], hideSecondCard: boolean = true): string {}
