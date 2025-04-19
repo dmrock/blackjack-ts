@@ -1,8 +1,23 @@
 import Deck from './deck';
 import { ICard } from './types';
-import { getBet, getHandValue, getStrHand } from './utils';
+import { getBet, getDecision, getHandValue, getStrHand } from './utils';
 
-function playerTurn(playerHand: ICard[], deck: Deck): number {}
+function playerTurn(playerHand: ICard[], deck: Deck): number {
+  let handValue = getHandValue(playerHand);
+
+  while (true) {
+    const action = getDecision();
+    if (action === 'hit') return handValue;
+
+    playerHand.push(deck.deal(1)[0]);
+    handValue = getHandValue(playerHand);
+    console.log(`Your hand: ${getStrHand(playerHand)} (Total: ${handValue})`);
+
+    if (handValue > 21) {
+      return handValue;
+    }
+  }
+}
 
 function dealerTurn(dealerHand: ICard[], deck: Deck): number {}
 
