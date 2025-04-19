@@ -5,11 +5,13 @@ const prompt = promptSync();
 
 export function getDecision(): 'hit' | 'stand' {
   while (true) {
-    const decision = prompt('Do you want to hit or stand?: ').toLowerCase();
-    if (decision === 'hit' || decision === 'stand') {
-      return decision as 'hit' | 'stand';
+    const decision = prompt('Do you want to hit or stand? (h/s): ').toLowerCase();
+    if (decision === 'hit' || decision === 'h') {
+      return 'hit';
+    } else if (decision === 'stand' || decision === 's') {
+      return 'stand';
     } else {
-      console.log('Invalid input. Please enter "hit" or "stand".');
+      console.log('Invalid input. Please enter "h" or "hit" for hit, "s" or "stand" for stand.');
     }
   }
 }
